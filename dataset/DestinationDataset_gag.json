@@ -1,0 +1,19 @@
+{
+	"name": "DestinationDataset_gag",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureStorageLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "emp_may28",
+				"folderPath": "output",
+				"container": "adftutorial"
+			}
+		}
+	}
+}
