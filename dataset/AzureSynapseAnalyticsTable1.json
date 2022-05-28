@@ -166,8 +166,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "dbo",
-			"table": "DimProduct"
+			"schema": "davidSampleDataWarehouse",
+			"table": "newtable"
 		}
 	}
 }
