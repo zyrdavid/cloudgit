@@ -3,86 +3,280 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "ForEach_8fv",
-				"type": "ForEach",
+				"name": "Copy data1",
+				"type": "Copy",
 				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
-					"items": {
-						"value": "@pipeline().parameters.cw_items",
-						"type": "Expression"
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
-					"activities": [
-						{
-							"name": "Copy_8fv",
-							"type": "Copy",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [
-								{
-									"name": "Source",
-									"value": "SalesLT.@{item().source.table}"
-								},
-								{
-									"name": "Destination",
-									"value": "SalesLT.@{item().destination.table}"
-								}
-							],
-							"typeProperties": {
+					"sink": {
+						"type": "SqlDWSink",
+						"allowCopyCommand": true
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
 								"source": {
-									"type": "AzureSqlSource",
-									"partitionOption": "None"
+									"name": "ProductID",
+									"type": "Int32"
 								},
 								"sink": {
-									"type": "SqlDWSink",
-									"allowPolyBase": true,
-									"polyBaseSettings": {
-										"rejectValue": 0,
-										"rejectType": "value",
-										"useTypeDefault": false
-									},
-									"tableOption": "autoCreate"
-								},
-								"enableStaging": true,
-								"stagingSettings": {
-									"linkedServiceName": {
-										"referenceName": "AzureStorageLinkedService",
-										"type": "LinkedServiceReference"
-									},
-									"path": "adftutorial"
-								},
-								"translator": {
-									"value": "@item().copyActivity.translator",
-									"type": "Expression"
+									"name": "ProductKey",
+									"type": "Int32"
 								}
 							},
-							"inputs": [
-								{
-									"referenceName": "SourceDataset_8fv",
-									"type": "DatasetReference",
-									"parameters": {
-										"cw_table": "@item().source.table"
-									}
+							{
+								"sink": {
+									"name": "ProductAlternateKey",
+									"type": "String"
 								}
-							],
-							"outputs": [
-								{
-									"referenceName": "DestinationDataset_8fv",
-									"type": "DatasetReference",
-									"parameters": {
-										"cw_table": "@item().destination.table"
-									}
+							},
+							{
+								"sink": {
+									"name": "ProductSubcategoryKey",
+									"type": "Int32"
 								}
-							]
-						}
-					]
-				}
+							},
+							{
+								"sink": {
+									"name": "WeightUnitMeasureCode",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "SizeUnitMeasureCode",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "EnglishProductName",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "SpanishProductName",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "FrenchProductName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "StandardCost",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "StandardCost",
+									"type": "Decimal"
+								}
+							},
+							{
+								"sink": {
+									"name": "FinishedGoodsFlag",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "Color",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Color",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "SafetyStockLevel",
+									"type": "Int16"
+								}
+							},
+							{
+								"sink": {
+									"name": "ReorderPoint",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "ListPrice",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ListPrice",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Size",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Size",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "SizeRange",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Weight",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Weight",
+									"type": "Single"
+								}
+							},
+							{
+								"sink": {
+									"name": "DaysToManufacture",
+									"type": "Int32"
+								}
+							},
+							{
+								"sink": {
+									"name": "ProductLine",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "DealerPrice",
+									"type": "Decimal"
+								}
+							},
+							{
+								"sink": {
+									"name": "Class",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "Style",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "ModelName",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "EnglishDescription",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "FrenchDescription",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "ChineseDescription",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "ArabicDescription",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "HebrewDescription",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "ThaiDescription",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "GermanDescription",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "JapaneseDescription",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "TurkishDescription",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "StartDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"sink": {
+									"name": "EndDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"sink": {
+									"name": "Status",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSynapseAnalyticsTable1",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"parameters": {
