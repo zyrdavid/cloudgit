@@ -83,6 +83,46 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('workspaceName'), '/SQL script 1')]",
+			"type": "Microsoft.Synapse/workspaces/sqlscripts",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"content": {
+					"query": "SELECT TOP (100) [CustomerId]\n,[FirstName]\n,[LastName]\n,[EmailAddress]\n,[Phone]\n FROM [RetailDB].[dbo].[Customer]",
+					"metadata": {
+						"language": "sql"
+					},
+					"currentConnection": {
+						"databaseName": "RetailDB",
+						"poolName": "Built-in"
+					},
+					"resultLimit": 5000
+				},
+				"type": "SqlQuery"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/SQL script 2')]",
+			"type": "Microsoft.Synapse/workspaces/sqlscripts",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"content": {
+					"query": "-- This is auto-generated code\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://datalakee4zrgfb.dfs.core.windows.net/files/sales/RetailDB/Customer/**',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0'\n    ) AS [result]\n",
+					"metadata": {
+						"language": "sql"
+					},
+					"currentConnection": {
+						"databaseName": "master",
+						"poolName": "Built-in"
+					},
+					"resultLimit": 5000
+				},
+				"type": "SqlQuery"
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('workspaceName'), '/RetailDB')]",
 			"type": "Microsoft.Synapse/workspaces/databases",
 			"apiVersion": "2019-06-01-preview",
@@ -102,7 +142,7 @@
 							},
 							"Source": {
 								"Provider": "ADLS",
-								"Location": "abfss://files@datalakee4zrgfb.dfs.core.windows.net/RetailDB",
+								"Location": "abfss://files@datalakee4zrgfb.dfs.core.windows.net/sales/RetailDB",
 								"Properties": {
 									"FormatType": "csv",
 									"LinkedServiceName": "synapsee4zrgfb-WorkspaceDefaultStorage"
@@ -201,7 +241,7 @@
 									"FormatType": "csv",
 									"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
 									"Properties": {
-										"path": "abfss://files@datalakee4zrgfb.dfs.core.windows.net/RetailDB/Customer",
+										"path": "abfss://files@datalakee4zrgfb.dfs.core.windows.net/sales/RetailDB/Customer",
 										"delimiter": ",",
 										"multiLine": "false",
 										"firstRowAsHeader": "false",
@@ -214,7 +254,7 @@
 								},
 								"Source": {
 									"Provider": "ADLS",
-									"Location": "abfss://files@datalakee4zrgfb.dfs.core.windows.net/RetailDB/Customer",
+									"Location": "abfss://files@datalakee4zrgfb.dfs.core.windows.net/sales/RetailDB/Customer",
 									"Properties": {
 										"LinkedServiceName": "synapsee4zrgfb-WorkspaceDefaultStorage",
 										"LocationSetToDatabaseDefault": true
@@ -243,6 +283,24 @@
 						}
 					}
 				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/SQL script 3')]",
+			"type": "Microsoft.Synapse/workspaces/sqlscripts",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"content": {
+					"query": "SELECT TOP (100) [CustomerId]\n,[FirstName]\n,[LastName]\n,[EmailAddress]\n,[Phone]\n FROM [RetailDB].[dbo].[Customer]",
+					"metadata": {
+						"language": "sql"
+					},
+					"currentConnection": {
+						"databaseName": "RetailDB",
+						"poolName": "Built-in"
+					}
+				}
 			},
 			"dependsOn": []
 		}
