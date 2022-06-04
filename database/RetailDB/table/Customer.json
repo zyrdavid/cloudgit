@@ -18,8 +18,8 @@
 					"Description": "Unique customer ID",
 					"OriginDataTypeName": {
 						"TypeName": "string",
-						"IsNullable": false,
 						"IsComplexType": false,
+						"IsNullable": false,
 						"Length": 256,
 						"Properties": {
 							"HIVE_TYPE_STRING": "string"
@@ -31,8 +31,8 @@
 					"Description": "Customer first name",
 					"OriginDataTypeName": {
 						"TypeName": "string",
-						"IsNullable": false,
 						"IsComplexType": false,
+						"IsNullable": false,
 						"Length": 256,
 						"Properties": {
 							"HIVE_TYPE_STRING": "string"
@@ -44,8 +44,8 @@
 					"Description": "Customer last name",
 					"OriginDataTypeName": {
 						"TypeName": "string",
-						"IsNullable": true,
 						"IsComplexType": false,
+						"IsNullable": true,
 						"Length": 256,
 						"Properties": {
 							"HIVE_TYPE_STRING": "string"
@@ -57,8 +57,8 @@
 					"Description": "Customer email",
 					"OriginDataTypeName": {
 						"TypeName": "string",
-						"IsNullable": false,
 						"IsComplexType": false,
+						"IsNullable": false,
 						"Length": 256,
 						"Properties": {
 							"HIVE_TYPE_STRING": "string"
@@ -70,8 +70,8 @@
 					"Description": "Customer phone",
 					"OriginDataTypeName": {
 						"TypeName": "string",
-						"IsNullable": true,
 						"IsComplexType": false,
+						"IsNullable": true,
 						"Length": 256,
 						"Properties": {
 							"HIVE_TYPE_STRING": "string"
@@ -85,7 +85,7 @@
 				"FormatType": "csv",
 				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
 				"Properties": {
-					"path": "abfss://files@datalakee4zrgfb.dfs.core.windows.net/RetailDB/Customer",
+					"path": "abfss://files@datalakee4zrgfb.dfs.core.windows.net/sales/RetailDB/Customer",
 					"delimiter": ",",
 					"multiLine": "false",
 					"firstRowAsHeader": "false",
@@ -98,7 +98,7 @@
 			},
 			"Source": {
 				"Provider": "ADLS",
-				"Location": "abfss://files@datalakee4zrgfb.dfs.core.windows.net/RetailDB/Customer",
+				"Location": "abfss://files@datalakee4zrgfb.dfs.core.windows.net/sales/RetailDB/Customer",
 				"Properties": {
 					"LinkedServiceName": "synapsee4zrgfb-WorkspaceDefaultStorage",
 					"LocationSetToDatabaseDefault": true
@@ -116,8 +116,7 @@
 			"Description": "",
 			"DisplayFolderInfo": "{\"name\":\"Others\",\"colorCode\":\"\"}",
 			"PrimaryKeys": "CustomerId",
-			"spark.sql.sources.provider": "csv",
-			"sql:IsAppendOnly": false
+			"spark.sql.sources.provider": "csv"
 		},
 		"Retention": 0,
 		"Temporary": false,

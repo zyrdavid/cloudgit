@@ -11,7 +11,7 @@
 		},
 		"Source": {
 			"Provider": "ADLS",
-			"Location": "abfss://files@datalakee4zrgfb.dfs.core.windows.net/RetailDB",
+			"Location": "abfss://files@datalakee4zrgfb.dfs.core.windows.net/sales/RetailDB",
 			"Properties": {
 				"FormatType": "csv",
 				"LinkedServiceName": "synapsee4zrgfb-WorkspaceDefaultStorage"
