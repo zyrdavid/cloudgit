@@ -8,6 +8,20 @@
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "Student ID",
+				"type": "Int32"
+			},
+			{
+				"name": "Student Name",
+				"type": "String"
+			},
+			{
+				"name": "Stream",
+				"type": "String"
+			}
+		],
 		"typeProperties": {
 			"tableName": "[dbo].[Student]"
 		}

@@ -8,6 +8,32 @@
 		},
 		"annotations": [],
 		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "number",
+				"type": "Int32"
+			},
+			{
+				"name": "type",
+				"type": "String"
+			},
+			{
+				"name": "low",
+				"type": "Int32"
+			},
+			{
+				"name": "high",
+				"type": "Int32"
+			},
+			{
+				"name": "status",
+				"type": "Int32"
+			}
+		],
 		"typeProperties": {
 			"tableName": "[dbo].[spt_values]"
 		}
