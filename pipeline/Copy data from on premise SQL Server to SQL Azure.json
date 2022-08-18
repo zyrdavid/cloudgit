@@ -30,9 +30,8 @@
 					"translator": {
 						"type": "TabularTranslator",
 						"columnMappings": {
-							"number": "Student ID",
-							"name": "Student Name",
-							"type": "Stream"
+							"Id": "Student ID",
+							"CompanyName": "Student Name"
 						}
 					}
 				},
