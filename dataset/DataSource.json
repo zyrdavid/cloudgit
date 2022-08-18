@@ -35,7 +35,7 @@
 			}
 		],
 		"typeProperties": {
-			"tableName": "[dbo].[spt_values]"
+			"tableName": "[dbo].[Suppliers]"
 		}
 	}
 }
