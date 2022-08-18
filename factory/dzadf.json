@@ -1,0 +1,9 @@
+{
+	"name": "dzadf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "71cd5c6a-8863-40a5-a70b-7b1f21fd0f95",
+		"tenantId": "483e9ab5-7ba0-478e-bc24-54371f7d6d96"
+	}
+}
