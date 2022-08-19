@@ -1,15 +1,16 @@
 {
 	"name": "synapsee4zrgfb-WorkspaceDefaultStorage",
-	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
-		"typeProperties": {
-			"url": "https://datalakee4zrgfb.dfs.core.windows.net"
-		},
+		"annotations": [],
 		"type": "AzureBlobFS",
-		"connectVia": {
-			"referenceName": "AutoResolveIntegrationRuntime",
-			"type": "IntegrationRuntimeReference"
+		"typeProperties": {
+			"url": "https://dzlake.dfs.core.windows.net/",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQENGMUU2QjA4LTE1RjctNEYyNC1CMkY1LUVCNDRCNjEyMTNFOF9mMmJmMDIwNy03YzVmLTQyZGItYmU0YS00NDk4NmY5NTRmY2EiDQp9"
 		},
-		"annotations": []
+		"connectVia": {
+			"referenceName": "integrationRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
 	}
 }
