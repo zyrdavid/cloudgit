@@ -19,9 +19,13 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'synapsee4zrgfb-WorkspaceDefaultSqlServer'"
 		},
+		"synapsee4zrgfb-WorkspaceDefaultStorage_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'synapsee4zrgfb-WorkspaceDefaultStorage'"
+		},
 		"synapsee4zrgfb-WorkspaceDefaultStorage_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://datalakee4zrgfb.dfs.core.windows.net"
+			"defaultValue": "https://dzlake.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -58,6 +62,9 @@
 					},
 					"synapsee4zrgfb-WorkspaceDefaultSqlServer_connectionString": {
 						"value": "[parameters('synapsee4zrgfb-WorkspaceDefaultSqlServer_connectionString')]"
+					},
+					"synapsee4zrgfb-WorkspaceDefaultStorage_accountKey": {
+						"value": "[parameters('synapsee4zrgfb-WorkspaceDefaultStorage_accountKey')]"
 					},
 					"synapsee4zrgfb-WorkspaceDefaultStorage_properties_typeProperties_url": {
 						"value": "[parameters('synapsee4zrgfb-WorkspaceDefaultStorage_properties_typeProperties_url')]"

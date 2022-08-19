@@ -14,8 +14,11 @@
 		"synapsee4zrgfb-WorkspaceDefaultSqlServer_connectionString": {
 			"value": ""
 		},
+		"synapsee4zrgfb-WorkspaceDefaultStorage_accountKey": {
+			"value": ""
+		},
 		"synapsee4zrgfb-WorkspaceDefaultStorage_properties_typeProperties_url": {
-			"value": "https://datalakee4zrgfb.dfs.core.windows.net"
+			"value": "https://dzlake.dfs.core.windows.net/"
 		}
 	}
 }
