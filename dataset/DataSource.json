@@ -10,16 +10,96 @@
 		"type": "SqlServerTable",
 		"structure": [
 			{
-				"name": "Id",
+				"name": "SalesOrderNumber",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderLineNumber",
+				"type": "Byte"
+			},
+			{
+				"name": "OrderDate",
+				"type": "Date"
+			},
+			{
+				"name": "DueDate",
+				"type": "Date"
+			},
+			{
+				"name": "ShipDate",
+				"type": "Date"
+			},
+			{
+				"name": "ProductKey",
 				"type": "Int32"
 			},
 			{
-				"name": "CompanyName",
+				"name": "CustomerKey",
+				"type": "Int32"
+			},
+			{
+				"name": "PromotionKey",
+				"type": "Int32"
+			},
+			{
+				"name": "CurrencyKey",
+				"type": "Int32"
+			},
+			{
+				"name": "SalesTerritoryKey",
+				"type": "Int32"
+			},
+			{
+				"name": "OrderQuantity",
+				"type": "Int16"
+			},
+			{
+				"name": "UnitPrice",
+				"type": "Decimal"
+			},
+			{
+				"name": "ExtendedAmount",
+				"type": "Decimal"
+			},
+			{
+				"name": "UnitPriceDiscountPct",
+				"type": "Decimal"
+			},
+			{
+				"name": "DiscountAmount",
+				"type": "Decimal"
+			},
+			{
+				"name": "ProductStandardCost",
+				"type": "Decimal"
+			},
+			{
+				"name": "TotalProductCost",
+				"type": "Decimal"
+			},
+			{
+				"name": "SalesAmount",
+				"type": "Decimal"
+			},
+			{
+				"name": "TaxAmt",
+				"type": "Decimal"
+			},
+			{
+				"name": "Freight",
+				"type": "Decimal"
+			},
+			{
+				"name": "CarrierTrackingNumber",
+				"type": "String"
+			},
+			{
+				"name": "CustomerPONumber",
 				"type": "String"
 			}
 		],
 		"typeProperties": {
-			"tableName": "[dbo].[Suppliers]"
+			"tableName": "FactInternetSales"
 		}
 	}
 }
