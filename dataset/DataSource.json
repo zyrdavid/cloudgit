@@ -99,7 +99,7 @@
 			}
 		],
 		"typeProperties": {
-			"tableName": "FactInternetSales"
+			"tableName": "[dbo].[FactInternetSales]"
 		}
 	}
 }

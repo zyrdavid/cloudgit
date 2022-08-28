@@ -7,10 +7,6 @@
 		},
 		"annotations": [],
 		"type": "AzureSqlDWTable",
-		"schema": [],
-		"typeProperties": {
-			"schema": "dbo",
-			"table": "FactInternetsales"
-		}
+		"schema": []
 	}
 }
