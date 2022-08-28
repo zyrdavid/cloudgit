@@ -23,7 +23,8 @@
 					},
 					"sink": {
 						"type": "SqlDWSink",
-						"allowCopyCommand": true,
+						"writeBehavior": "Insert",
+						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
@@ -43,7 +44,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSynapseAnalyticsTable2",
+						"referenceName": "AzureSynapseAnalyticsTable1",
 						"type": "DatasetReference"
 					}
 				]
