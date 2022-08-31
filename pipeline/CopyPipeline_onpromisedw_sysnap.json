@@ -1,0 +1,424 @@
+{
+	"name": "CopyPipeline_onpromisedw_sysnap",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach_xjy",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.cw_items",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy_xjy",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "dbo.@{item().source.table}"
+								},
+								{
+									"name": "Destination",
+									"value": "dbo.@{item().destination.table}"
+								}
+							],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "SqlDWSink",
+									"allowPolyBase": true,
+									"polyBaseSettings": {
+										"rejectValue": 0,
+										"rejectType": "value",
+										"useTypeDefault": true
+									},
+									"tableOption": "autoCreate"
+								},
+								"enableStaging": true,
+								"stagingSettings": {
+									"linkedServiceName": {
+										"referenceName": "synapsee4zrgfb-WorkspaceDefaultStorage",
+										"type": "LinkedServiceReference"
+									}
+								},
+								"logSettings": {
+									"enableCopyActivityLog": true,
+									"copyActivityLogSettings": {
+										"logLevel": "Warning",
+										"enableReliableLogging": false
+									},
+									"logLocationSettings": {
+										"linkedServiceName": {
+											"referenceName": "synapsee4zrgfb-WorkspaceDefaultStorage",
+											"type": "LinkedServiceReference"
+										}
+									}
+								},
+								"translator": {
+									"value": "@item().copyActivity.translator",
+									"type": "Expression"
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "SourceDataset_xjy",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_table": "@item().source.table"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DestinationDataset_xjy",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_table": "@item().destination.table"
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"cw_items": {
+				"type": "Array",
+				"defaultValue": [
+					{
+						"source": {
+							"table": "DimAccount"
+						},
+						"destination": {
+							"table": "DimAccount"
+						},
+						"copyActivity": {
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "AccountKey",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "AccountKey",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "ParentAccountKey",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "ParentAccountKey",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "AccountCodeAlternateKey",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "AccountCodeAlternateKey",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "ParentAccountCodeAlternateKey",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "ParentAccountCodeAlternateKey",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "AccountDescription",
+											"type": "String"
+										},
+										"sink": {
+											"name": "AccountDescription",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "AccountType",
+											"type": "String"
+										},
+										"sink": {
+											"name": "AccountType",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Operator",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Operator",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CustomMembers",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CustomMembers",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ValueType",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ValueType",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CustomMemberOptions",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CustomMemberOptions",
+											"type": "String"
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"source": {
+							"table": "DimCurrency"
+						},
+						"destination": {
+							"table": "DimCurrency"
+						},
+						"copyActivity": {
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "CurrencyKey",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "CurrencyKey",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "CurrencyAlternateKey",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CurrencyAlternateKey",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CurrencyName",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CurrencyName",
+											"type": "String"
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"source": {
+							"table": "FactCallCenter"
+						},
+						"destination": {
+							"table": "FactCallCenter"
+						},
+						"copyActivity": {
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "FactCallCenterID",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "FactCallCenterID",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "DateKey",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "DateKey",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "WageType",
+											"type": "String"
+										},
+										"sink": {
+											"name": "WageType",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Shift",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Shift",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "LevelOneOperators",
+											"type": "Int16"
+										},
+										"sink": {
+											"name": "LevelOneOperators",
+											"type": "Int16"
+										}
+									},
+									{
+										"source": {
+											"name": "LevelTwoOperators",
+											"type": "Int16"
+										},
+										"sink": {
+											"name": "LevelTwoOperators",
+											"type": "Int16"
+										}
+									},
+									{
+										"source": {
+											"name": "ServiceGrade",
+											"type": "Double"
+										},
+										"sink": {
+											"name": "ServiceGrade",
+											"type": "Double"
+										}
+									},
+									{
+										"source": {
+											"name": "Date",
+											"type": "DateTime"
+										},
+										"sink": {
+											"name": "Date",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "TotalOperators",
+											"type": "Int16"
+										},
+										"sink": {
+											"name": "TotalOperators",
+											"type": "Int16"
+										}
+									},
+									{
+										"source": {
+											"name": "Calls",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "Calls",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "AutomaticResponses",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "AutomaticResponses",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "Orders",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "Orders",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "IssuesRaised",
+											"type": "Int16"
+										},
+										"sink": {
+											"name": "IssuesRaised",
+											"type": "Int16"
+										}
+									},
+									{
+										"source": {
+											"name": "AverageTimePerIssue",
+											"type": "Int16"
+										},
+										"sink": {
+											"name": "AverageTimePerIssue",
+											"type": "Int16"
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			}
+		},
+		"annotations": []
+	}
+}
